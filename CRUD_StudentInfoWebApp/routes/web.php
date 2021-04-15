@@ -25,6 +25,10 @@ Route::post('login/register', 'App\Http\Controllers\Login\LoginController@Store'
 //for AUTHENTICATE
 Route::middleware('auth')->group(function () {
     
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
     //dashboard view
     Route::get('dashboard', function () {
         return view('welcome');
@@ -38,6 +42,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('departments', 'App\Http\Controllers\DepartmentsController' );
     
     //for PDF Download Student List
-    Route::get('students\generate-pdf', 'App\Http\Controllers\StudentsController@PDF' )->name('students.pdf');
+    Route::get('students/generate-pdf', 'App\Http\Controllers\StudentsController@PDF' )->name('students.pdf');
     
 });
